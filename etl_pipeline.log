@@ -1,0 +1,81 @@
+2026-05-03 22:04:11,495 [INFO] ============================================================
+2026-05-03 22:04:11,495 [INFO]   DÉMARRAGE DU PIPELINE ETL — PostgreSQL
+2026-05-03 22:04:11,495 [INFO] ============================================================
+2026-05-03 22:04:11,661 [INFO] [EXTRACT] Lecture de hospital_readmission_dataset.csv
+2026-05-03 22:04:11,723 [INFO] [EXTRACT] 8000 lignes, 17 colonnes chargées
+2026-05-03 22:04:11,725 [INFO] [TRANSFORM] Début de la transformation
+2026-05-03 22:04:11,838 [INFO] [TRANSFORM] dim_patient : 8000 lignes
+2026-05-03 22:04:11,873 [INFO] [TRANSFORM] dim_date : 1092 lignes
+2026-05-03 22:08:24,351 [INFO] ============================================================
+2026-05-03 22:08:24,351 [INFO]   PIPELINE ETL Hospital DW  --  PostgreSQL
+2026-05-03 22:08:24,352 [INFO] ============================================================
+2026-05-03 22:08:24,620 [ERROR] ============================================================
+2026-05-03 22:08:24,621 [ERROR] [CONNEXION] ECHEC de connexion a PostgreSQL !
+2026-05-03 22:08:24,621 [ERROR]   Host     : localhost
+2026-05-03 22:08:24,622 [ERROR]   Port     : 5433
+2026-05-03 22:08:24,622 [ERROR]   Database : hospital_dw
+2026-05-03 22:08:24,622 [ERROR]   User     : postgres
+2026-05-03 22:08:24,623 [ERROR] 
+2026-05-03 22:08:24,623 [ERROR] Solutions possibles :
+2026-05-03 22:08:24,623 [ERROR]   1. La base n'existe pas -> creez-la dans pgAdmin :
+2026-05-03 22:08:24,624 [ERROR]        CREATE DATABASE hospital_dw;
+2026-05-03 22:08:24,624 [ERROR]   2. Mauvais mot de passe -> corrigez PG_CONFIG['password']
+2026-05-03 22:08:24,624 [ERROR]   3. Mauvais port -> verifiez dans pgAdmin > Properties
+2026-05-03 22:08:24,625 [ERROR]      (votre PostgreSQL tourne sur le port 5433)
+2026-05-03 22:08:24,625 [ERROR]   Erreur brute : (psycopg2.OperationalError) 
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-03 22:08:24,625 [ERROR] ============================================================
+2026-05-03 22:09:33,086 [INFO] ============================================================
+2026-05-03 22:09:33,087 [INFO]   PIPELINE ETL Hospital DW  --  PostgreSQL
+2026-05-03 22:09:33,087 [INFO] ============================================================
+2026-05-03 22:09:33,253 [ERROR] ============================================================
+2026-05-03 22:09:33,253 [ERROR] [CONNEXION] ECHEC de connexion a PostgreSQL !
+2026-05-03 22:09:33,254 [ERROR]   Host     : localhost
+2026-05-03 22:09:33,254 [ERROR]   Port     : 5433
+2026-05-03 22:09:33,254 [ERROR]   Database : hospital_dataWarehouse
+2026-05-03 22:09:33,254 [ERROR]   User     : postgres
+2026-05-03 22:09:33,255 [ERROR] 
+2026-05-03 22:09:33,255 [ERROR] Solutions possibles :
+2026-05-03 22:09:33,255 [ERROR]   1. La base n'existe pas -> creez-la dans pgAdmin :
+2026-05-03 22:09:33,256 [ERROR]        CREATE DATABASE hospital_dataWarehouse;
+2026-05-03 22:09:33,256 [ERROR]   2. Mauvais mot de passe -> corrigez PG_CONFIG['password']
+2026-05-03 22:09:33,256 [ERROR]   3. Mauvais port -> verifiez dans pgAdmin > Properties
+2026-05-03 22:09:33,256 [ERROR]      (votre PostgreSQL tourne sur le port 5433)
+2026-05-03 22:09:33,257 [ERROR]   Erreur brute : (psycopg2.OperationalError) 
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-03 22:09:33,257 [ERROR] ============================================================
+2026-05-03 22:10:56,855 [INFO] ============================================================
+2026-05-03 22:10:56,856 [INFO]   PIPELINE ETL Hospital DW  --  PostgreSQL
+2026-05-03 22:10:56,856 [INFO] ============================================================
+2026-05-03 22:10:57,077 [INFO] [CONNEXION] OK  ->  localhost:5433 / hospital_dataWarehouse
+2026-05-03 22:10:57,077 [INFO] [EXTRACT] Lecture de hospital_readmission_dataset.csv
+2026-05-03 22:10:57,123 [INFO] [EXTRACT] 8000 lignes, 17 colonnes chargees
+2026-05-03 22:10:57,123 [INFO] [EXTRACT] Schema valide [OK]
+2026-05-03 22:10:57,124 [INFO] [TRANSFORM] Debut de la transformation
+2026-05-03 22:10:57,205 [INFO] [TRANSFORM] Nettoyage termine [OK]
+2026-05-03 22:10:57,211 [INFO] [TRANSFORM] dim_patient : 8000 lignes
+2026-05-03 22:10:57,234 [INFO] [TRANSFORM] dim_date : 1092 lignes
+2026-05-03 22:10:57,300 [INFO] [TRANSFORM] fact_admission : 8000 lignes [OK]
+2026-05-03 22:10:57,409 [INFO] [LOAD] Table dim_patient creee / verifiee [OK]
+2026-05-03 22:10:57,414 [INFO] [LOAD] Table dim_date creee / verifiee [OK]
+2026-05-03 22:10:57,427 [INFO] [LOAD] Table dim_diagnosis creee / verifiee [OK]
+2026-05-03 22:10:57,431 [INFO] [LOAD] Table dim_treatment creee / verifiee [OK]
+2026-05-03 22:10:57,437 [INFO] [LOAD] Table dim_insurance creee / verifiee [OK]
+2026-05-03 22:10:57,453 [INFO] [LOAD] Table fact_admission creee / verifiee [OK]
+2026-05-03 22:10:57,482 [INFO] [LOAD] Tables videes (TRUNCATE CASCADE) [OK]
+2026-05-03 22:10:58,747 [INFO] [LOAD] dim_patient          :   8000 lignes inserees [OK]
+2026-05-03 22:10:59,032 [INFO] [LOAD] dim_date             :   1092 lignes inserees [OK]
+2026-05-03 22:10:59,040 [INFO] [LOAD] dim_diagnosis        :     11 lignes inserees [OK]
+2026-05-03 22:10:59,046 [INFO] [LOAD] dim_treatment        :      4 lignes inserees [OK]
+2026-05-03 22:10:59,053 [INFO] [LOAD] dim_insurance        :      4 lignes inserees [OK]
+2026-05-03 22:11:02,890 [INFO] [LOAD] fact_admission       :   8000 lignes inserees [OK]
+2026-05-03 22:11:02,984 [INFO] [LOAD] Index + vue v_readmission_kpis crees [OK]
+2026-05-03 22:11:02,986 [INFO] 
+2026-05-03 22:11:02,986 [INFO]   ETL termine en 6.1s  [OK]
+2026-05-03 22:11:02,987 [INFO] 
+2026-05-03 22:11:02,991 [INFO]    dim_patient            :   8000 lignes
+2026-05-03 22:11:02,996 [INFO]    dim_date               :   1092 lignes
+2026-05-03 22:11:03,001 [INFO]    dim_diagnosis          :     11 lignes
+2026-05-03 22:11:03,004 [INFO]    dim_treatment          :      4 lignes
+2026-05-03 22:11:03,007 [INFO]    dim_insurance          :      4 lignes
+2026-05-03 22:11:03,018 [INFO]    fact_admission         :   8000 lignes

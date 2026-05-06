@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Rapport LSTM - Readmission</title>
+  <style>
+    body  { font-family: Arial, sans-serif; max-width: 960px; margin: auto; padding: 24px; }
+    h1    { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; }
+    h2    { color: #34495e; margin-top: 32px; }
+    .kpi  { display: flex; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
+    .card { background: #ecf0f1; border-radius: 10px; padding: 18px 24px;
+             flex: 1; text-align: center; min-width: 140px; }
+    .card .val { font-size: 2em; font-weight: bold; color: #2980b9; }
+    .card .lbl { font-size: 0.85em; color: #7f8c8d; margin-top: 4px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+    th, td { border: 1px solid #bdc3c7; padding: 9px 14px; text-align: center; }
+    th    { background: #2c3e50; color: white; }
+    tr:nth-child(even) { background: #f8f9fa; }
+    img   { max-width: 100%; border-radius: 8px; margin-top: 20px; border: 1px solid #ddd; }
+    .badge { display:inline-block; padding:3px 10px; border-radius:12px;
+              background:#3498db; color:white; font-size:0.8em; margin-left:8px; }
+    .footer { color: #95a5a6; font-size: 0.82em; text-align: center; margin-top: 48px; }
+  </style>
+</head>
+<body>
+  <h1>BiLSTM &mdash; Prediction de Readmission Hospitaliere
+    <span class="badge">PostgreSQL</span>
+  </h1>
+  <p>
+    Source : <b>PostgreSQL hospital_dw</b> &nbsp;|&nbsp;
+    Modele : <b>Bidirectional LSTM</b> &nbsp;|&nbsp;
+    Sequence : <b>5 admissions</b> &nbsp;|&nbsp;
+    Batch : <b>64</b>
+  </p>
+
+  <h2>KPIs du Modele</h2>
+  <div class="kpi">
+    <div class="card">
+      <div class="val">0.833</div>
+      <div class="lbl">AUC-ROC</div>
+    </div>
+    <div class="card">
+      <div class="val">0.945</div>
+      <div class="lbl">Precision (Readmis)</div>
+    </div>
+    <div class="card">
+      <div class="val">0.693</div>
+      <div class="lbl">Rappel (Readmis)</div>
+    </div>
+    <div class="card">
+      <div class="val">0.799</div>
+      <div class="lbl">F1-Score (Readmis)</div>
+    </div>
+    <div class="card">
+      <div class="val">1237</div>
+      <div class="lbl">Support (Readmis)</div>
+    </div>
+  </div>
+
+  <h2>Rapport de Classification</h2>
+  <table>
+    <tr>
+      <th>Classe</th><th>Precision</th><th>Rappel</th>
+      <th>F1-Score</th><th>Support</th>
+    </tr>
+    
+            <tr>
+              <td>Non readmis</td>
+              <td>0.452</td>
+              <td>0.862</td>
+              <td>0.593</td>
+              <td>363</td>
+            </tr>
+            <tr>
+              <td>Readmis</td>
+              <td>0.945</td>
+              <td>0.693</td>
+              <td>0.799</td>
+              <td>1237</td>
+            </tr>
+            <tr>
+              <td>macro avg</td>
+              <td>0.698</td>
+              <td>0.778</td>
+              <td>0.696</td>
+              <td>1600</td>
+            </tr>
+            <tr>
+              <td>weighted avg</td>
+              <td>0.833</td>
+              <td>0.731</td>
+              <td>0.753</td>
+              <td>1600</td>
+            </tr>
+  </table>
+
+  <h2>Visualisations</h2>
+  <img src="lstm_evaluation.png" alt="Graphiques d evaluation LSTM">
+
+  <div class="footer">
+    Source PostgreSQL : localhost:5433/hospital_dataWarehouse<br>
+    Genere le 2026-05-03 22:23 &mdash; Pipeline IA Hospitalier
+  </div>
+</body>
+</html>
